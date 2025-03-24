@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -20,6 +19,8 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table->string('role')->default('user');
+            $table->boolean('subscribed')->default(true);
             $table->timestamps();
         });
 
@@ -38,12 +39,26 @@ return new class extends Migration
             $table->integer('last_activity')->index();
         });
 
+
         DB::table('users')->insert([
-            'name' => env('ADMIN_CREDENTIAL_NAME'),
-            'email' => env('ADMIN_CREDENTIAL_EMAIL'),
-            'password' => Hash::make(env('ADMIN_CREDENTIAL_PASSWORD')),
+            [
+            'name' => env('ADMIN_CREDENTIAL_NAME', 'admin'),
+            'email' => env('ADMIN_CREDENTIAL_EMAIL', 'admin@akom.dev'),
+            'password' => bcrypt(env('ADMIN_CREDENTIAL_PASSWORD', '123123')), // Use a secure password
+            'role' => 'admin',
+            'subscribed' => true,
             'created_at' => now(),
             'updated_at' => now(),
+            ],
+            [
+            'name' => env('SUB_ADMIN_CREDENTIAL_NAME', 'subAdmin'),
+            'email' => env('SUB_ADMIN_CREDENTIAL_EMAIL', 'subadmin@akom.dev'),
+            'password' => bcrypt(env('SUB_ADMIN_CREDENTIAL_PASSWORD', '123123')), // Use a secure password
+            'role' => 'subadmin',
+            'subscribed' => true,
+            'created_at' => now(),
+            'updated_at' => now(),
+            ],
         ]);
     }
 

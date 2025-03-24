@@ -1,23 +1,17 @@
 <?php
 
+use App\Http\Controllers\googleAuthController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\NewsController;
-use App\Http\Controllers\PageController;
-use App\Http\Controllers\SubscriberController;
-use App\Http\Controllers\JadwalSholatController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 
-Route::get('/news', [NewsController::class, 'index']);
-Route::get('/news/{slug}', [NewsController::class, 'show']);
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
-Route::post('/subscribe', [SubscriberController::class, 'store']);
-Route::get('/unsubscribe/{id_subscriber}', [SubscriberController::class, 'destroy']);
-
-
-Route::get('/demo', [PageController::class, 'demoLandingPage']);
-
-Route::get('/demo/jadwal-sholat', [JadwalSholatController::class, 'index']);
+Route::get('/auth/google', [googleAuthController::class, 'redirectToGoogle'])->name('google.login');
+Route::get('/auth/google/callback', [googleAuthController::class, 'handleGoogleCallback']);
+Route::post('/auth/logout', [googleAuthController::class, 'logout'])->name('google.logout');

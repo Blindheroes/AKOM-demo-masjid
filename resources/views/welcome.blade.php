@@ -9,6 +9,7 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=login" />
 
         <!-- Styles / Scripts -->
         @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
@@ -111,6 +112,21 @@
                         </li>
                     </ul>
                     <ul class="flex gap-3 text-sm leading-normal">
+                        <li>
+                            @if(Auth::check())
+                                <!-- Jika user sudah login, tampilkan tombol Logout -->
+                                <form action="{{ route('google.logout') }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger">Logout</button>
+                                </form>
+                            @else
+                                <!-- Jika user belum login, tampilkan tombol Login dengan Google -->
+                                <a href="{{ route('google.login') }}" class="btn btn-danger">
+                                    <span class="material-symbols-outlined">login</span>
+                                </a>
+                            @endif
+                        </li>
+                        
                         <li>
                             <a href="https://cloud.laravel.com" target="_blank" class="inline-block dark:bg-[#eeeeec] dark:border-[#eeeeec] dark:text-[#1C1C1A] dark:hover:bg-white dark:hover:border-white hover:bg-black hover:border-black px-5 py-1.5 bg-[#1b1b18] rounded-sm border border-black text-white text-sm leading-normal">
                                 Deploy now
