@@ -9,16 +9,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable implements FilamentUser
-// class User extends Authenticatable
+// class User extends Authenticatable implements FilamentUser
+class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
-    public function canAccessPanel(Panel $panel): bool
-    {
-        return str_ends_with($this->email, '@akom.dev');
-        // return str_ends_with($this->email, '@akom.dev') && $this->hasVerifiedEmail();
-    }
+    // public function canAccessPanel(Panel $panel): bool
+    // {
+    //     return str_ends_with($this->email, '@akom.dev');
+    //     // return str_ends_with($this->email, '@akom.dev') && $this->hasVerifiedEmail();
+    // }
     /**
      * The attributes that are mass assignable.
      *
