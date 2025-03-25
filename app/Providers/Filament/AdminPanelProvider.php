@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use Closure;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\Widgets;
@@ -32,8 +33,11 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
+            ->profile()
+            ->passwordReset()
+            ->emailVerification()
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Green,
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
@@ -58,20 +62,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
-            ]);
-    }
 
-    public function boot()
-    {
-        Filament::serving(function () {
-            Filament::registerAuthMiddleware([
-                function ($request, $next) {
-                    if (!Auth::check() || Auth::user()->role !== 'admin') {
-                        abort(403); // Cegah akses bagi non-admin
-                    }
-                    return $next($request);
-                },
             ]);
-        });
     }
 }
