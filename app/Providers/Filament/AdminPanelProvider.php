@@ -63,6 +63,9 @@ class AdminPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
 
-            ]);
+            ])
+            ->font('Poppins')
+            ->theme(asset('css/filament/admin/theme.css'))
+            ->spa();
     }
 }

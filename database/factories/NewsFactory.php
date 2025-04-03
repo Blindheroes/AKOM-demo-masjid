@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\UpcomingEvent>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\News>
  */
-class UpcomingEventFactory extends Factory
+class NewsFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,13 +17,11 @@ class UpcomingEventFactory extends Factory
     public function definition(): array
     {
         return [
-           
 
-            'date' => $this->faker->dateTimeBetween('now', '+1 year'),
+
             'title' => $this->faker->sentence,
             'content' => $this->faker->paragraph,
             'image' => $this->faker->imageUrl(),
-
         ];
     }
 }

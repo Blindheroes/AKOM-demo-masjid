@@ -16,4 +16,8 @@ class EditUpcomingEvent extends EditRecord
             Actions\DeleteAction::make(),
         ];
     }
+    protected function getRedirectUrl(): string
+    {
+        return UpcomingEventResource::getUrl('index');
+    }
 }
