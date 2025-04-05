@@ -52,7 +52,11 @@ class UpcomingEventResource extends Resource
                 Section::make('Content')->columns(1)->schema([
                     Forms\Components\FileUpload::make('image')
                         ->label('Thumbnail')
-                        ->image(),
+                        ->image()
+                        ->maxSize(1024)
+                        ->preserveFilenames()
+                        ->directory('event')
+                        ->visibility('public'),
 
                     Forms\Components\RichEditor::make('content')
                         ->label('Content')
@@ -67,7 +71,9 @@ class UpcomingEventResource extends Resource
             ->columns([
 
                 ImageColumn::make('image')
-                    ->label('Thumnail'),
+                    ->label('Thumbnail')
+                    ->size(50)
+                    ->toggleable(isToggledHiddenByDefault: true),
 
                 TextColumn::make('date')
                     ->label('Date')->sortable()

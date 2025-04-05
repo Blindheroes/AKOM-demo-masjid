@@ -42,4 +42,9 @@ class News extends Model
             } while (static::whereIdNews($model->id_news)->exists());
         });
     }
+    // if image is null, return default image
+    public function getImageAttribute($value)
+    {
+        return $value ? asset('storage/' . $value) : asset('images/defaultNews.png');
+    }
 }

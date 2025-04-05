@@ -53,4 +53,9 @@ class UpcomingEvent extends Model
     {
         $query->where('date', '>', Carbon::now())->orderBy('date', 'asc');
     }
+    // if image is null, return default image
+    public function getImageAttribute($value)
+    {
+        return $value ? asset('storage/' . $value) : asset('images/defaultEvent.png');
+    }
 }

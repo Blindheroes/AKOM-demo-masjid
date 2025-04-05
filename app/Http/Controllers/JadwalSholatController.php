@@ -26,7 +26,6 @@ class JadwalSholatController extends Controller
             return response()->json(['error' => $e->getMessage()], 500);
         }
 
-        // return view('jadwal-sholat.index', ['jadwal' => $jadwal]);
-        return response()->json($jadwal);
+        return $jadwal;
     }
 }

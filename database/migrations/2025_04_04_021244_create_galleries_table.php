@@ -11,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('news', function (Blueprint $table) {
-            $table->string('id_news')->primary();
-            $table->string('title');
-            $table->longText('content');
-            $table->string('image')->nullable();
-            $table->string('slug')->unique();
-            $table->softDeletes();
-
+        Schema::create('galleries', function (Blueprint $table) {
+            $table->string('id_gallery')->primary();
+            $table->string('name')->nullable();
+            $table->string('description')->nullable();
+            $table->string('path')->nullable();
+            $table->enum('type', ['image', 'video', 'audio'])->default('image');
             $table->timestamps();
         });
     }
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('news');
+        Schema::dropIfExists('galleries');
     }
 };

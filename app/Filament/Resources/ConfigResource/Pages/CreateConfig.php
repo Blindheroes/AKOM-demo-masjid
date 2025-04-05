@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Filament\Resources\NewsResource\Pages;
+namespace App\Filament\Resources\ConfigResource\Pages;
 
-use App\Filament\Resources\NewsResource;
+use App\Filament\Resources\ConfigResource;
 use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord;
 
-class CreateNews extends CreateRecord
+class CreateConfig extends CreateRecord
 {
-    protected static string $resource = NewsResource::class;
+    protected static string $resource = ConfigResource::class;
     protected function getRedirectUrl(): string
     {
         return $this->previousUrl ?? $this->getResource()::getUrl('index');

@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('upcoming_events', function (Blueprint $table) {
-            $table->string('id_event')->primary();
-            $table->timestamp('date');
-            $table->string('title');
-            $table->longText('content')->nullable();
+        Schema::create('management', function (Blueprint $table) {
+            $table->string('id_management')->primary();
+            $table->string('name')->required();
+            $table->string('position')->required();
+            $table->string('email')->required();
+            $table->string('phone')->required();
+            $table->boolean('reveal_contact')->default(false);
             $table->string('image')->nullable();
-            $table->string('slug')->unique();
 
-            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('upcoming_events');
+        Schema::dropIfExists('management');
     }
 };

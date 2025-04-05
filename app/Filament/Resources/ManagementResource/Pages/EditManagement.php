@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Filament\Resources\UpcomingEventResource\Pages;
+namespace App\Filament\Resources\ManagementResource\Pages;
 
-use App\Filament\Resources\UpcomingEventResource;
+use App\Filament\Resources\ManagementResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
-class EditUpcomingEvent extends EditRecord
+class EditManagement extends EditRecord
 {
-    protected static string $resource = UpcomingEventResource::class;
+    protected static string $resource = ManagementResource::class;
 
     protected function getHeaderActions(): array
     {

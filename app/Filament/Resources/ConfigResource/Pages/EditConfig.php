@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Filament\Resources\UpcomingEventResource\Pages;
+namespace App\Filament\Resources\ConfigResource\Pages;
 
-use App\Filament\Resources\UpcomingEventResource;
+use App\Filament\Resources\ConfigResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
-class EditUpcomingEvent extends EditRecord
+class EditConfig extends EditRecord
 {
-    protected static string $resource = UpcomingEventResource::class;
+    protected static string $resource = ConfigResource::class;
 
     protected function getHeaderActions(): array
     {
         return [
-            Actions\DeleteAction::make(),
+            // Actions\DeleteAction::make(),
         ];
     }
     protected function getRedirectUrl(): string

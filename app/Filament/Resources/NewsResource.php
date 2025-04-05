@@ -50,7 +50,11 @@ class NewsResource extends Resource
                 Section::make('Content')->columns(1)->schema([
                     Forms\Components\FileUpload::make('image')
                         ->label('Thumbnail')
-                        ->image(),
+                        ->image()
+                        ->maxSize(1024)
+                        ->preserveFilenames()
+                        ->directory('news')
+                        ->visibility('public'),
 
                     Forms\Components\RichEditor::make('content')
                         ->label('Content')
@@ -64,7 +68,9 @@ class NewsResource extends Resource
         return $table
             ->columns([
                 ImageColumn::make('image')
-                    ->label('Thumnail'),
+                    ->label('Thumbnail')
+                    ->size(50)
+                    ->toggleable(isToggledHiddenByDefault: true),
 
                 TextColumn::make('updated_at')
                     ->label('Date')

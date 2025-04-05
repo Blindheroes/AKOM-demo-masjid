@@ -18,6 +18,6 @@ class EditNews extends EditRecord
     }
     protected function getRedirectUrl(): string
     {
-        return NewsResource::getUrl('index');
+        return $this->previousUrl ?? $this->getResource()::getUrl('index');
     }
 }

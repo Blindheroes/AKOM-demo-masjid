@@ -22,7 +22,7 @@ class UpcomingEventFactory extends Factory
             'date' => $this->faker->dateTimeBetween('now', '+1 year'),
             'title' => $this->faker->sentence,
             'content' => $this->faker->paragraph,
-            'image' => $this->faker->imageUrl(),
+            // 'image' => $this->faker->imageUrl(),
 
         ];
     }

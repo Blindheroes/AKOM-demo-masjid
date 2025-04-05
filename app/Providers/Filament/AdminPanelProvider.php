@@ -66,6 +66,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->font('Poppins')
             ->theme(asset('css/filament/admin/theme.css'))
-            ->spa();
+            ->spa()
+            ->sidebarCollapsibleOnDesktop();
     }
 }

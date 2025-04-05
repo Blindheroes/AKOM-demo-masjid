@@ -11,7 +11,7 @@ class CreateUpcomingEvent extends CreateRecord
     protected static string $resource = UpcomingEventResource::class;
     // get redirect url after create
     protected function getRedirectUrl(): string
-    {
-        return UpcomingEventResource::getUrl('index');
-    }
+{
+    return $this->previousUrl ?? $this->getResource()::getUrl('index');
+}
 }
